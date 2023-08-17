@@ -1,17 +1,32 @@
 {
   "compilerOptions": {
-    "target": "ES2018", // Target ES2018 for AWS Lambda Node.js 14.x runtime.
-    "module": "commonjs", // Use commonjs for Node.js.
-    "outDir": "./dist", // Output directory for compiled JavaScript files.
-    "rootDir": "./src", // Root directory for your TypeScript files.
-    "strict": true, // Enable all strict type-checking options.
-    "noImplicitReturns": true, // Report an error when not all code paths in function return a value.
-    "noImplicitAny": true, // Raise an error on expressions and declarations with an implied 'any' type.
-    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules.
-    "skipLibCheck": true, // Skip type checking of declaration files.
-    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
-    "moduleResolution": "node" // Node.js-style module resolution.
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["es2020", "dom"],
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": "./",
+    "paths": {
+      "/opt/nodejs/shared-libraries": [
+        "src/layers/shared-libraries/nodejs/shared-libraries"
+      ],
+      "/opt/nodejs/business-logic": [
+        "src/layers/business-logic/nodejs/business-logic"
+      ]
+    }
   },
-  "include": ["src/**/*.ts"], // Include all TypeScript files in src directory and sub-directories.
-  "exclude": ["node_modules"] // Exclude the node_modules directory.
+  "exclude": ["node_modules", "**/node_modules/*", "cdk.out"]
 }
